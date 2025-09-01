@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
         <footer className="bg-dark-bg border-t border-dark-border">
             <div className="container mx-auto px-6 py-8 max-w-7xl text-center text-medium-text">
                 <a href="#hero" className="mb-4 inline-block">
-                     <img src="/assets/logoSite2.png" alt="NeoEase Logo" className="h-24 mx-auto" />
+                     <img src="https://i.imgur.com/hLWBAk1.png" alt="NeoEase Logo" className="h-24 mx-auto" />
                 </a>
                 <p className="mb-4">Menos esforço, mais resultado. Com IA, tudo é possível.</p>
                 <p className="text-sm">&copy; {new Date().getFullYear()} NeoEase. Todos os direitos reservados.</p>
