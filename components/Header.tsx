@@ -21,9 +21,9 @@ const Header: React.FC = () => {
     return (
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-dark-bg/80 backdrop-blur-lg border-b border-dark-border' : 'bg-transparent'}`}>
             <div className="container mx-auto px-6 max-w-7xl">
-                <div className="flex justify-between items-center h-20">
-                    <a href="#hero" className="text-3xl font-bold tracking-wider">
-                        <span className="text-primary">NEOEASE</span>
+                <div className="flex justify-between items-center h-28">
+                    <a href="#hero">
+                        <img src="https://raw.githubusercontent.com/riquelima/NeoEase-InteligenciaArtificial/refs/heads/main/logoSiteTransparente.png" alt="NeoEase Logo" className="h-20" />
                     </a>
                     <nav className="hidden md:flex space-x-8">
                         {navLinks.map((link) => (
