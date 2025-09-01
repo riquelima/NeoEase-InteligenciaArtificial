@@ -1,11 +1,10 @@
 import React from 'react';
 
-// Define types for the custom web component to satisfy TypeScript
 declare global {
     namespace JSX {
         interface IntrinsicElements {
-            // FIX: Corrected the type definition for the 'dotlottie-wc' custom web component to resolve the JSX.IntrinsicElements error.
-            'dotlottie-wc': React.HTMLProps<HTMLElement> & {
+            // FIX: Using React.DetailedHTMLProps to be more explicit and ensure the custom element type is correctly resolved by TypeScript.
+            'dotlottie-wc': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
                 src: string;
                 speed?: string;
                 autoplay?: boolean;
