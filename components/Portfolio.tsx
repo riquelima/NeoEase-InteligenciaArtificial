@@ -1,11 +1,12 @@
+
 import React, { useState, useMemo } from 'react';
-import { PROJECTS, FILTERS } from '../constants';
+import { FILTERS } from '../constants';
 import ProjectCard from './ProjectCard';
 import { Project } from '../types';
 
 type FilterType = 'category' | 'industry';
 
-const Portfolio: React.FC = () => {
+const Portfolio: React.FC<{ projects: Project[] }> = ({ projects }) => {
     const [activeFilters, setActiveFilters] = useState<{ type: FilterType; value: string }[]>([]);
 
     const handleFilterClick = (type: FilterType, value: string) => {
@@ -25,9 +26,9 @@ const Portfolio: React.FC = () => {
 
     const filteredProjects = useMemo<Project[]>(() => {
         if (activeFilters.length === 0) {
-            return PROJECTS;
+            return projects;
         }
-        return PROJECTS.filter(project => {
+        return projects.filter(project => {
             return activeFilters.every(filter => {
                 if (filter.type === 'category') {
                     return project.category.includes(filter.value);
@@ -38,9 +39,9 @@ const Portfolio: React.FC = () => {
                 return false;
             });
         });
-    }, [activeFilters]);
+    }, [activeFilters, projects]);
     
-    const FilterButton = ({ type, value }: { type: FilterType, value: string }) => {
+    const FilterButton = ({ type, value }: { type: FilterType, value:string }) => {
         const isActive = activeFilters.some(f => f.value === value);
         return (
             <button

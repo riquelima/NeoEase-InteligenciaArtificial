@@ -1,19 +1,5 @@
 import React from 'react';
 
-declare global {
-    namespace JSX {
-        interface IntrinsicElements {
-            // FIX: Using React.DetailedHTMLProps to be more explicit and ensure the custom element type is correctly resolved by TypeScript.
-            'dotlottie-wc': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
-                src: string;
-                speed?: string;
-                autoplay?: boolean;
-                loop?: boolean;
-            };
-        }
-    }
-}
-
 const WhatsAppButton: React.FC = () => {
     const phoneNumber = '5551989130351';
     const message = encodeURIComponent('Olá! Tenho interesse nos serviços da NeoEase e gostaria de mais informações.');
