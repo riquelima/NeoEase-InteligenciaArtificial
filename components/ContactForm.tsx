@@ -16,13 +16,21 @@ const ContactForm: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        alert('Formulário enviado! (Simulação)\n' + JSON.stringify(formData, null, 2));
+        
+        const phoneNumber = '5551989130351';
+        const messageText = `Olá! Gostaria de falar com um especialista da NeoEase.\n\n*Meus dados:*\n- *Nome:* ${formData.name}\n- *Email:* ${formData.email}\n- *Telefone:* ${formData.phone || 'Não informado'}\n- *Empresa:* ${formData.company || 'Não informada'}\n\n*Mensagem:*\n${formData.message}`;
+        
+        const encodedMessage = encodeURIComponent(messageText);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+        window.open(whatsappUrl, '_blank');
+        
         // Reset form
         setFormData({ name: '', email: '', phone: '', company: '', message: '' });
     };
 
     return (
-        <section id="contato" className="py-24 bg-dark-card/50">
+        <section id="contato" className="py-24 bg-dark-card/50 scroll-mt-28">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div>

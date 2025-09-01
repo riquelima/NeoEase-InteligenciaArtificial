@@ -25,10 +25,14 @@ const Hero: React.FC = () => {
                     Transforme sua operação com IA em tempo recorde.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <a href="#contato" className="bg-primary hover:bg-primary-hover text-black px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary/20">
+                    <a 
+                        href="#contato" 
+                        className="bg-primary hover:bg-primary-hover text-black px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary/20">
                         Quero automatizar agora
                     </a>
-                    <a href="#portfolio" className="border border-primary text-primary hover:bg-primary/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300">
+                    <a 
+                        href="#portfolio"
+                        className="border border-primary text-primary hover:bg-primary/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300">
                         Ver projetos
                     </a>
                 </div>

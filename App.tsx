@@ -14,7 +14,7 @@ const CheckIcon = () => (
 );
 
 const Section = ({ id, children, className = '' }: { id: string; children: React.ReactNode; className?: string }) => (
-    <section id={id} className={`py-24 ${className}`}>
+    <section id={id} className={`py-24 scroll-mt-28 ${className}`}>
         <div className="container mx-auto px-6 max-w-7xl">
             {children}
         </div>
