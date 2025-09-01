@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeoEase - Menos esforço, mais resultado.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00FF41',
+                        'primary-hover': '#33FF99',
+                        secondary: '#00FF41',
+                        'dark-bg': '#05140A',
+                        'dark-card': 'rgba(11, 41, 21, 0.95)',
+                        'light-text': '#F1F5F9',
+                        'medium-text': '#9DB3A7',
+                        'dark-border': '#1E4B31',
+                        success: '#10B981',
+                        alert: '#F59E0B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    },
+                    animation: {
+                      'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                      fadeInUp: {
+                        'from': { opacity: '0', transform: 'translateY(20px)' },
+                        'to': { opacity: '1', transform: 'translateY(0)' },
+                      },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+      body {
+        background-color: #05140A;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/"
+  }
+}
+</script>
+</head>
+<body class="bg-dark-bg text-light-text font-sans antialiased">
+    <div id="root"></div>
+</body>
+</html>
