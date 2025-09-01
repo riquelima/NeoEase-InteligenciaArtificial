@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
                 muted
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover z-0"
-                poster="https://picsum.photos/seed/hero/1920/1080"
+                poster="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'><rect width='1' height='1' fill='%2305140A'/></svg>"
             >
                 <source src="https://cdn.pixabay.com/video/2019/08/14/26041-355469036_large.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
