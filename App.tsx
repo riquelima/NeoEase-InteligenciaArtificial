@@ -7,6 +7,7 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import ApplyNow from './components/ApplyNow';
 import WhatsAppButton from './components/WhatsAppButton';
+import ChatWidget from './components/ChatWidget';
 import { PROJECTS, FILTERS } from './constants';
 import { Project } from './types';
 import ProjectCard from './components/ProjectCard';
@@ -73,6 +74,10 @@ const ProcessSection = () => (
 );
 
 const HomePage = ({ projects }: { projects: Project[] }) => {
+    const [isChatOpen, setIsChatOpen] = useState(false);
+
+    const toggleChat = () => setIsChatOpen(prev => !prev);
+
     return (
         <div className="bg-dark-bg min-h-screen">
             <Header />
@@ -85,7 +90,8 @@ const HomePage = ({ projects }: { projects: Project[] }) => {
                 <ContactForm />
             </main>
             <Footer />
-            <WhatsAppButton />
+            <WhatsAppButton onClick={toggleChat} />
+            <ChatWidget isOpen={isChatOpen} onClose={toggleChat} />
         </div>
     );
 };

@@ -1,27 +1,22 @@
 import React from 'react';
 
-const WhatsAppButton: React.FC = () => {
-    const phoneNumber = '5551989130351';
-    const message = encodeURIComponent('Olá! Tenho interesse nos serviços da NeoEase e gostaria de mais informações.');
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+interface ChatToggleButtonProps {
+    onClick: () => void;
+}
 
+const WhatsAppButton: React.FC<ChatToggleButtonProps> = ({ onClick }) => {
     return (
-        <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Fale conosco no WhatsApp"
+        <button
+            onClick={onClick}
+            aria-label="Abrir chat com assistente virtual"
             className="fixed bottom-8 right-8 z-50 w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 animate-fade-in-up"
         >
-            <dotlottie-wc 
-                src="https://lottie.host/be169fb1-1543-4e1b-b1e6-d31defb304e0/ktcgmobv6b.lottie" 
-                style={{ width: '64px', height: '64px' }} 
-                speed="1" 
-                autoplay 
-                loop
-            >
-            </dotlottie-wc>
-        </a>
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" 
+                alt="WhatsApp Icon" 
+                className="w-full h-full object-cover rounded-full"
+            />
+        </button>
     );
 };
 
