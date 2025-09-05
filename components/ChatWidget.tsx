@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChatMessage } from '../types';
 
-const webhookUrl = 'https://n8n-n8n-start.gq4riy.easypanel.host/webhook/cbfb219f-0194-4998-91b2-2af9e8af1240';
+const webhookUrl = 'https://n8n-n8n-start.gq4riy.easypanel.host/webhook/08957189-3551-4066-b3b8-297a09c51be5';
 
 interface ChatWidgetProps {
     isOpen: boolean;
@@ -85,12 +85,12 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ isOpen, onClose }) => {
       setIsLoading(true);
 
       try {
-        const body = new URLSearchParams({ question: currentInput }).toString();
+        const body = JSON.stringify({ question: currentInput });
 
         const response = await fetch(webhookUrl, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'Content-Type': 'application/json',
           },
           body,
         });
@@ -101,17 +101,36 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ isOpen, onClose }) => {
 
         const text = await response.text();
         let responseData: any = {};
-        try { responseData = JSON.parse(text); } catch (_) { responseData = { text }; }
+        try { 
+            // n8n might return an empty string for a successful but no-op response
+            if (text) {
+                responseData = JSON.parse(text); 
+            }
+        } catch (_) { 
+            responseData = { text }; 
+        }
 
-        const aiReply = responseData.reply || responseData.text || 'Desculpe, não entendi.';
+        let aiReply = 'Desculpe, não entendi.';
+        
+        // n8n can respond with an array of items or a single object.
+        const firstItem = Array.isArray(responseData) ? responseData[0] : responseData;
+
+        if (firstItem && typeof firstItem === 'object') {
+            // As per the n8n screenshot, the AI response is in the 'output' field.
+            // We also check for other common fields for robustness.
+            aiReply = firstItem.output || firstItem.reply || firstItem.text || aiReply;
+        } else if (typeof firstItem === 'string') {
+            aiReply = firstItem;
+        }
+
         setMessages(prev => [...prev, { sender: 'ai', text: aiReply, timestamp: Date.now() }]);
 
       } catch (error: any) {
         console.error('Failed to send message:', error);
         const userFriendlyMessage =
           error?.message?.includes('500')
-            ? 'Sua mensagem foi enviada, mas o servidor (n8n) deu erro 500. Verifique o workflow.'
-            : 'Não foi possível conectar ao assistente (possível CORS/servidor).';
+            ? 'Ocorreu um erro no servidor (n8n). Verifique o console do navegador e o workflow para mais detalhes.'
+            : 'Não foi possível conectar ao assistente. Verifique sua conexão ou a configuração do servidor.';
         setMessages(prev => [...prev, { sender: 'ai', text: userFriendlyMessage, timestamp: Date.now() }]);
       } finally {
         setIsLoading(false);
