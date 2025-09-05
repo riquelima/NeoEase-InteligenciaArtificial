@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ChatMessage } from '../types';
 
-const webhookUrl = 'https://n8n-n8n-start.gq4riy.easypanel.host/webhook/08957189-3551-4066-b3b8-297a09c51be5';
+const webhookUrl = 'https://n8n.intelektus.tech/webhook/9bf47703-438d-425b-a15f-8b9523da712b';
 
 interface ChatWidgetProps {
     isOpen: boolean;
